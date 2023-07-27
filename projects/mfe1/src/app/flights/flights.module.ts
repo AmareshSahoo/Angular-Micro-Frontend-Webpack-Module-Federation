@@ -11,6 +11,8 @@ import { FLIGHTS_ROUTES } from './flights.routes';
   ],
   declarations: [
     FlightsSearchComponent
+  ],
+  exports: [
   ]
 })
 export class FlightsModule { }

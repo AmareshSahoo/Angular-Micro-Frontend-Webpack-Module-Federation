@@ -10,20 +10,19 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
     pathMatch: 'full',
   },
-  // Your route here:
-  // {
-  //   path: 'flights',
-  //   loadChildren: () => import('mfe1/FlightModule').then(m => m.FlightsModule)
-  // },
   {
     path: 'flights',
-    loadChildren: () =>
-      loadRemoteModule({
-        type: 'module',
-        remoteEntry: environment.flightAppURL,
-        exposedModule: './FlightModule',
-      }).then((m) => m.FlightsModule),
+    loadChildren: () => import('mfe1/FlightsModule').then(m => m.FlightsModule)
   },
+  // {
+  //   path: 'flights',
+  //   loadChildren: () =>
+  //     loadRemoteModule({
+  //       type: 'module',
+  //       remoteEntry: environment.flightAppURL,
+  //       exposedModule: './FlightsModule',
+  //     }).then((m) => m.FlightsModule),
+  // },
   {
     path: '**',
     component: NotFoundComponent,
