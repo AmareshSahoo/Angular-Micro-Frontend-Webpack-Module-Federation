@@ -10,12 +10,12 @@ export class FlightsSearchComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  constructor(private authService: AuthLibService) {
-    this.username = this.authService.user_name;
-    this.password = this.authService.user_password;
-  }
+  constructor(private authService: AuthLibService) {}
 
-  async ngOnInit() {}
+  ngOnInit() {
+    this.username = this.authService.user_name || '';
+    this.password = this.authService.user_password || '';
+  }
 
   search(): void {
     alert('Not implemented for this demo!');

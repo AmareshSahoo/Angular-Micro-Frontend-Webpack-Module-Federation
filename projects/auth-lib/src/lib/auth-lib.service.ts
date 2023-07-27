@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthLibService {
-  private userName: string;
-  private password: string;
+  private userName: string = 'Test User';
+  private password: string = '';
 
   public get user_name(): string {
     return this.userName;
