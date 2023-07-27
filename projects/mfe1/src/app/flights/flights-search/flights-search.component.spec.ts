@@ -39,4 +39,9 @@ describe('FlightsSearchComponent', () => {
     expect(component.username ).toEqual(service.user_name);
   });
 
+  it('should render Welcome Back Message with username', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.username-txt').textContent).toContain(`Welcome Back: ${component.username}`);
+  });
 });
