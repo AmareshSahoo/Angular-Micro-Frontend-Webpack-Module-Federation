@@ -1,5 +1,12 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { environment } from '../../environments/environment';
 // import { LazyComponent } from 'mfe1/LazyComponent'
 
@@ -7,14 +14,22 @@ import { environment } from '../../environments/environment';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
+export class HomeComponent implements OnInit, AfterViewInit {
+  constructor(private cdRef: ChangeDetectorRef  ) {}
 
   @ViewChild('lazyComponentPlaceHolder', { read: ViewContainerRef })
   lazyComponentPlaceHolder!: ViewContainerRef;
 
   ngOnInit() {
     this.loadLazyComponent();
+
+    //Clear Search Result
+    const event = new CustomEvent('FLIGHT_SEARCH', { detail: { from: '', to: '' }});
+    dispatchEvent(event);
+  }
+
+  ngAfterViewInit() {
+    this.cdRef.detectChanges();
   }
 
   async loadLazyComponent() {

@@ -1,8 +1,18 @@
 <ul>
-    <li><img src="../assets/angular.png" width="50"></li>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/flights/flights-search">Flights</a></li>
+  <li><img src="../assets/angular.png" width="50"></li>
+  <li><a routerLink="/">Home</a></li>
+  <li><a routerLink="/flights/flights-search">Flights</a></li>
+
+  <ng-container *ngIf="flightSearchObj && flightSearchObj.from && flightSearchObj.to">
+    <div class="search-results">
+      <li>Search Results</li>
+      <li>From : {{flightSearchObj?.from}}</li>
+      <li>To : {{flightSearchObj?.to}}</li>
+    </div>
+  </ng-container>
 </ul>
 
-<router-outlet></router-outlet>
 
+
+
+<router-outlet></router-outlet>

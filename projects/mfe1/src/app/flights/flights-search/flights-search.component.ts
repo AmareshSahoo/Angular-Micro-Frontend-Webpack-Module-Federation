@@ -10,6 +10,11 @@ export class FlightsSearchComponent implements OnInit {
   username: string = '';
   password: string = '';
 
+  searchObj = {
+    from: '',
+    to: '',
+  };
+
   constructor(private authService: AuthLibService) {}
 
   ngOnInit() {
@@ -18,7 +23,9 @@ export class FlightsSearchComponent implements OnInit {
   }
 
   search(): void {
-    alert('Not implemented for this demo!');
+    console.log('Search', this.searchObj);
+    const event = new CustomEvent('FLIGHT_SEARCH', { detail: this.searchObj });
+    dispatchEvent(event);
   }
 
   terms(): void {

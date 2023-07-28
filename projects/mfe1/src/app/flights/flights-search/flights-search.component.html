@@ -5,10 +5,10 @@
   </div>
   <h1>Flights</h1>
   <div>
-    <input type="text" placeholder="From">
+    <input type="text" [(ngModel)]="searchObj.from" placeholder="From">
   </div>
   <div>
-    <input type="text" placeholder="To">
+    <input type="text" [(ngModel)]="searchObj.to" placeholder="To">
   </div>
   <div>
     <button (click)="search()">Search</button>
